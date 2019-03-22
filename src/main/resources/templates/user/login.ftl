@@ -1,11 +1,6 @@
 <#include "../public/main.ftl">
 <@layout>
     <div style="padding: 100px 100px 10px;">
-        <div class="form-group input-group-sm">
-            <label for="nickname">昵称</label>
-            <input type="text" class="form-control" id="nickname" placeholder="输入昵称">
-        </div>
-
 
         <div class="form-group input-group-sm">
             <label for="username">用户名:</label>
@@ -39,7 +34,6 @@
             $('#regis_submit').click(function () {
                 console.log("clicked");
                 try {
-                    var nickname = $('#nickname').val();
                     var username = $('#username').val();
                     var password = $('#pwd').val();
 
@@ -56,19 +50,22 @@
                         var data = {
                             username: username,
                             password: password,
-                            nickname: nickname,
                         };
-                        $.post("${base}/blog/regis", data,
+                        $.post("${base}/blog/login", data,
                             function (data, status) {
                                 console.log(data);
                                 if (data['code'] == -1) {
-                                    if (data['msg'] == "username_exist") {
-                                        $('#dialog_inform_text').text("用户名已经存在");
-                                    } else {
+                                    if (data['msg'] == "username_not_exist") {
+                                        $('#dialog_inform_text').text("用户名不存在");
+                                    } else if(data['msg'] == "password_wrong") {
+                                        $('#dialog_inform_text').text("密码错误");
+                                    }else if (data['msg'] == 'login_already') {
+                                        $("#dialog_inform_text").text("已经登录");
+                                    }else {
                                         $('#dialog_inform_text').text("出现未知错误");
                                     }
                                 } else {
-                                    $('#dialog_inform_text').text("注册成功");
+                                    $('#dialog_inform_text').text("登录成功");
                                 }
                                 $('#dialog_inform').dialog("open");
                             }

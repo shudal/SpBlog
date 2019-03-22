@@ -10,6 +10,7 @@ public class User {
     private String username;
     private String password;
     private String nickname;
+    private int role;
 
     public int getId() {
         return id;
@@ -27,6 +28,8 @@ public class User {
         return nickname;
     }
 
+    public int getRole(){return role;}
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -37,5 +40,9 @@ public class User {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }
