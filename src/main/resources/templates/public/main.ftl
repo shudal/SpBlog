@@ -23,7 +23,7 @@
                       </div>
                       <div>
                       <ul class="nav navbar-nav">
-                           <li class="active"><a href="${base}/">首页</a></li>
+                           <li><a href="${base}/">首页</a></li>
                             <li ><a href="${base}/blog/comp">计科</a></li>
                            <li><a href="${base}/blog/play">玩耍</a></li>
                          <li><a href="${base}/blog/about/index">关于</a></li>
@@ -37,7 +37,6 @@
             </div>
 
             <div class="main_footer">
-            this is footer.
             </div>
         </body>
     </html>
